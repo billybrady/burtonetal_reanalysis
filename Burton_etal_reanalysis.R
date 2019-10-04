@@ -78,8 +78,10 @@ metoo_xyz <- INSERT_DF
 summary(glm.nb(diffusion ~ XYZcount , data = metoo_xyz))
 
 #random count gen bounded by range of ME count in metoo sample
+#can loop this to generate multiple rand count generations and model results
 range(metoo_xyz$`Moral-Emotional`)
 metoo_xyz$random <-sample.int(14, 151572, replace = TRUE)
+summary(glm.nb(diffusion ~ XYZcount , data = metoo_xyz))
 
 # bootstrapping with 500 replications
 results <- boot(data=metoo_xyz, statistic=cof,
